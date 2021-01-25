@@ -1,0 +1,37 @@
+{
+  "name": "blog-app-server",
+  "version": "1.0.0",
+  "description": "- [ ] login / register\r - [ ] crud blog post\r - [ ] you can add tags for each post\r - [ ] adding medium like blog text editor\r - [ ] user can comment on blog post\r - [ ] user can bookmark blog post\r - [ ] user can like the post",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel ./src --out-dir ./build",
+    "start": "nodemon --exec babel-node src/index.js",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@youtube:ericz619/blog-app-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/runtime": "^7.12.5",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.19.2",
+    "express": "^4.17.1",
+    "graphql": "^15.4.0"
+  }
+}
