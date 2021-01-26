@@ -1,19 +1,13 @@
 import express from 'express';
 import { ApolloServer, gql } from 'apollo-server-express';
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-    type Query {
-        hello: String
-    }
-`;
+import typeDefs from './typeDefs';
+
+// # RUN OUR DATABASE
+require('./helper/init-mongo');
 
 // Provide resolver functions for your schema fields
-const resolvers = {
-    Query: {
-        hello: () => 'Hello world!',
-    },
-};
+const resolvers = {};
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
