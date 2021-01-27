@@ -1,8 +1,13 @@
 import { User } from '../models';
 
+import { attemptLogin } from '../helper/auth';
+
 export default {
     Query: {
-        me: (root, args, context, info) => {},
+        me: (root, args, context, info) => {
+            console.log(context.me);
+            return User.findById(context.me.id);
+        },
     },
     Mutation: {
         registerUser: async (root, args, context, info) => {
@@ -19,6 +24,10 @@ export default {
                 }
             }
         },
-        loginUser: (root, args, context, info) => {},
+        loginUser: async (root, args, context, info) => {
+            return {
+                ...(await attemptLogin({ ...args })),
+            };
+        },
     },
 };
