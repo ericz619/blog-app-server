@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const postSchema = new mongoose.Schema({
     title: String,
     body: String,
-    tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'tag' }],
+    tags: [String],
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
     createdAt: {
         type: Date,

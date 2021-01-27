@@ -7,6 +7,7 @@ import config from '../config';
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true,
+            useFindAndModify: true,
         });
 
         console.log('Successfully connected to database!');

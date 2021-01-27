@@ -20,7 +20,7 @@ export default gql`
             body: String!
             tags: [String]! = []
             author: ID!
-        ): UpdatePostRespose!
+        ): UpdatePostResponse!
     }
 
     type CreatePostResponse {
@@ -34,7 +34,7 @@ export default gql`
         errors: [Error]!
     }
 
-    type UpdatePostRespose {
+    type UpdatePostResponse {
         ok: Boolean!
         post: Post!
         errors: [Error]!
@@ -44,7 +44,7 @@ export default gql`
         id: ID!
         title: String!
         body: String!
-        tags: [Tag]!
+        tags: [String]!
         author: User!
         createdAt: String!
     }

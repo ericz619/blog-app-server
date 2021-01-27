@@ -1,0 +1,63 @@
+import { User, Post } from '../models';
+
+export default {
+    Query: {
+        getPost: (root, { postID }, context, info) => {
+            return Post.findById({ _id: postID });
+        },
+        getPosts: (root, args, context, info) => {
+            return Post.find({});
+        },
+    },
+    Mutation: {
+        createPost: async (root, args, context, info) => {
+            try {
+                const post = await Post.create({ ...args });
+                return {
+                    ok: true,
+                    post,
+                    errors: [],
+                };
+            } catch (e) {
+                if (e) {
+                    console.log(e);
+                }
+            }
+        },
+        removePost: async (root, { postID }, context, info) => {
+            try {
+                await Post.deleteOne({ _id: postID });
+                return {
+                    ok: true,
+                    errors: [],
+                };
+            } catch (e) {
+                if (e) {
+                    console.log(e);
+                }
+            }
+        },
+        updatePost: async (root, { postID, ...args }, context, info) => {
+            try {
+                const post = await Post.findByIdAndUpdate(postID, {
+                    $set: { ...args },
+                });
+
+                return {
+                    ok: true,
+                    post,
+                    errors: [],
+                };
+            } catch (e) {
+                if (e) {
+                    console.log(e);
+                }
+            }
+        },
+    },
+    Post: {
+        author: (root, args, context, info) => {
+            return User.findById({ _id: root.author });
+        },
+    },
+};

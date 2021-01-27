@@ -2,12 +2,10 @@ import express from 'express';
 import { ApolloServer, gql } from 'apollo-server-express';
 
 import typeDefs from './typeDefs';
+import resolvers from './resolvers';
 
 // # RUN OUR DATABASE
 require('./helper/init-mongo');
-
-// Provide resolver functions for your schema fields
-const resolvers = {};
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
