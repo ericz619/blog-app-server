@@ -1,11 +1,11 @@
 import { User } from '../models';
 
 import { attemptLogin } from '../helper/auth';
+import formatError from '../formatError';
 
 export default {
     Query: {
         me: (root, args, context, info) => {
-            console.log(context.me);
             return User.findById(context.me.id);
         },
     },
@@ -20,7 +20,10 @@ export default {
                 };
             } catch (e) {
                 if (e) {
-                    console.log(e);
+                    return {
+                        ok: false,
+                        errors: formatError(e),
+                    };
                 }
             }
         },

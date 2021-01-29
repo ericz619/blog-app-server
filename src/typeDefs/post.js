@@ -2,8 +2,8 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
     extend type Query {
-        getPost(postID: ID!): Post!
-        getPosts: [Post]!
+        getPost(postID: ID!): Post! @auth
+        getPosts: [Post]! @auth
     }
 
     extend type Mutation {
@@ -12,15 +12,15 @@ export default gql`
             body: String!
             tags: [String]! = []
             author: ID!
-        ): CreatePostResponse!
-        removePost(postID: ID!): RemovePostResponse!
+        ): CreatePostResponse! @auth
+        removePost(postID: ID!): RemovePostResponse! @auth
         updatePost(
             postID: ID!
             title: String!
             body: String!
             tags: [String]! = []
             author: ID!
-        ): UpdatePostResponse!
+        ): UpdatePostResponse! @auth
     }
 
     type CreatePostResponse {

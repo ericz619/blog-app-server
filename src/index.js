@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 
 import typeDefs from './typeDefs';
 import resolvers from './resolvers';
+import schemaDirectives from './directives';
 import config from './config';
 import { User } from './models';
 import { genNewToken } from './helper/auth';
@@ -14,6 +15,7 @@ require('./helper/init-mongo');
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    schemaDirectives,
     context: async ({ req, res }) => {
         let user;
 

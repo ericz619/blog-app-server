@@ -1,5 +1,7 @@
 import { User, Post } from '../models';
 
+import formatError from '../formatError';
+
 export default {
     Query: {
         getPost: (root, { postID }, context, info) => {
@@ -20,7 +22,10 @@ export default {
                 };
             } catch (e) {
                 if (e) {
-                    console.log(e);
+                    return {
+                        ok: false,
+                        errors: formatError(e),
+                    };
                 }
             }
         },
@@ -33,7 +38,10 @@ export default {
                 };
             } catch (e) {
                 if (e) {
-                    console.log(e);
+                    return {
+                        ok: false,
+                        errors: formatError(e),
+                    };
                 }
             }
         },
@@ -50,7 +58,10 @@ export default {
                 };
             } catch (e) {
                 if (e) {
-                    console.log(e);
+                    return {
+                        ok: false,
+                        errors: formatError(e),
+                    };
                 }
             }
         },

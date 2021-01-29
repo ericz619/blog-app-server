@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 
 import { User } from '../models';
 import config from '../config';
+import formatError from '../formatError';
 
 export const createToken = async (user) => {
     const accessToken = await jwt.sign(
@@ -93,6 +94,11 @@ export const attemptLogin = async ({ email, password }) => {
             refreshToken,
         };
     } catch (e) {
-        console.log(e);
+        if (e) {
+            return {
+                ok: false,
+                errors: formatError(e),
+            };
+        }
     }
 };

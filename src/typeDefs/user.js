@@ -2,7 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
     extend type Query {
-        me: User!
+        me: User! @auth
     }
 
     extend type Mutation {
@@ -22,8 +22,8 @@ export default gql`
 
     type LoginResponse {
         ok: Boolean!
-        accessToken: String!
-        refreshToken: String!
+        accessToken: String
+        refreshToken: String
         errors: [Error!]
     }
 
