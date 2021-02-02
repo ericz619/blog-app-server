@@ -47,9 +47,13 @@ export default {
         },
         updatePost: async (root, { postID, ...args }, context, info) => {
             try {
-                const post = await Post.findByIdAndUpdate(postID, {
-                    $set: { ...args },
-                });
+                const post = await Post.findByIdAndUpdate(
+                    postID,
+                    {
+                        $set: { ...args },
+                    },
+                    { returnOriginal: false, new: true }
+                );
 
                 return {
                     ok: true,
